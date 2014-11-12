@@ -52,6 +52,7 @@ public class NumberDisplay
     }
     
     /**
+     * New commit
      * Un método que incrementa en 1 al display y lo hace volver al principio si alcanza el límite (nombre del método: increment)
      */
     public void increment()
