@@ -28,6 +28,7 @@ public class NumberDisplay
     }
     
     /**
+     * New commit
      * Un método que devuelve el valor actual del display en forma de cadena de 2 caracteres (nombre del método: getDisplayValue).
      */
  
