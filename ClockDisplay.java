@@ -63,6 +63,12 @@ public class ClockDisplay
     
     private void updateDisplay()
     {
-        horaActual = horas.getDisplayValue()+ ":" + minutos.getDisplayValue();
+        if (horas.getValue() > 12) {
+            int setHoras = horas.getValue() - 12;
+            horaActual = setHoras + ":" +  minutos.getDisplayValue() + "p.m.";
+        }
+        else {
+            horaActual = horas.getDisplayValue() + ":" +  minutos.getDisplayValue() + "a.m.";
+        }  
     }
 }
