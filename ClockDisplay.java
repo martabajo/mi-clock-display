@@ -45,6 +45,17 @@ public class ClockDisplay
      updateDisplay();
     }
     
+    /**
+     * metodo timeTick que hace avanzar un minuto la hora actual. 
+     */
+    public void timeTick()
+    {
+        minutos.increment();
+        if(minutos.getValue() == 0) {  // it just rolled over!
+            horas.increment();
+        }
+        updateDisplay();
+    }
     public String get()
     {
     return horaActual;
