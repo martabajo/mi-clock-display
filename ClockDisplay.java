@@ -56,6 +56,7 @@ public class ClockDisplay
         }
         updateDisplay();
     }
+    
     public String get()
     {
     return horaActual;
@@ -63,12 +64,35 @@ public class ClockDisplay
     
     private void updateDisplay()
     {
-        if (horas.getValue() > 12) {
-            int setHoras = horas.getValue() - 12;
-            horaActual = setHoras + ":" +  minutos.getDisplayValue() + "p.m.";
+        if(horas.getValue() < 12)
+        {
+            if (horas.getValue() == 0)
+            {
+                horaActual = "12"+ ":" + minutos.getDisplayValue() + " am";
+            }
+            else
+            {
+                horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " am";
+            }
         }
-        else {
-            horaActual = horas.getDisplayValue() + ":" +  minutos.getDisplayValue() + "a.m.";
-        }  
+        else
+        {
+            if (horas.getValue() == 12)
+            {
+                horaActual = horas.getValue() + ":" + minutos.getDisplayValue() + " pm";
+            }
+            else
+            { 
+                if((horas.getValue()-12) <10 )
+                {
+                    horaActual = "0" + (horas.getValue()-12) + ":" + minutos.getDisplayValue() + " pm";
+                }
+                else
+                {
+                    horaActual = (horas.getValue()-12) + ":"  + minutos.getDisplayValue() + " pm";
+                }
+            }
+        }
     }
+    
 }
