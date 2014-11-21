@@ -12,7 +12,9 @@ public class ClockDisplay
     private NumberDisplay minutos;
     //Un string de 5 caracteres: la hora, dos puntos y los minutos.
     private String horaActual;
-    
+    private NumberDisplay dia;
+    private NumberDisplay mes;
+    private NumberDisplay año;
     /**
      * Constuctor for objects of class ClockDisplay 
      */
@@ -20,18 +22,27 @@ public class ClockDisplay
     {
       horas = new NumberDisplay(24);
       minutos = new NumberDisplay(60);
+      dia = new NumberDisplay(30);
+      mes  = new NumberDisplay(12);
+      año = new NumberDisplay(2015);
       updateDisplay();
     }
     
      /**
       * Constructor que crea un reloj con las horas y minutos dados
       */
-     public ClockDisplay(int nuevaHora, int nuevoMinuto)
+     public ClockDisplay(int nuevaHora, int nuevoMinuto, int nuevoDia, int nuevoMes, int nuevoAño)
     {
       horas = new NumberDisplay(24);
       minutos = new NumberDisplay(60);
       horas.setValue(nuevaHora);
       minutos.setValue(nuevoMinuto);
+      dia = new NumberDisplay(30);
+      mes  = new NumberDisplay(12);
+      año = new NumberDisplay(2015);
+      dia.setValue(nuevoDia);
+      mes.setValue(nuevoMes);
+      año.setValue(nuevoAño);
       updateDisplay();
     }
     
@@ -44,7 +55,7 @@ public class ClockDisplay
      minutos.setValue(setMinutos);
      updateDisplay();
     }
-    
+     
     /**
      * metodo timeTick que hace avanzar un minuto la hora actual. 
      */
@@ -57,7 +68,7 @@ public class ClockDisplay
         updateDisplay();
     }
     
-    public String get()
+    public String getTime()
     {
     return horaActual;
     }
@@ -68,28 +79,28 @@ public class ClockDisplay
         {
             if (horas.getValue() == 0)
             {
-                horaActual = "12"+ ":" + minutos.getDisplayValue() + " am";
+                horaActual = "12"+ ":" + minutos.getDisplayValue() + " am"+ " " + dia.getDisplayValue() + "/" + mes.getDisplayValue() +  "/" + año.getDisplayValue();
             }
             else
             {
-                horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " am";
+                horaActual = horas.getDisplayValue() + ":" + minutos.getDisplayValue() + " am" + " " + dia.getDisplayValue() + "/" + mes.getDisplayValue() +  "/" + año.getDisplayValue();
             }
         }
         else
         {
             if (horas.getValue() == 12)
             {
-                horaActual = horas.getValue() + ":" + minutos.getDisplayValue() + " pm";
+                horaActual = horas.getValue() + ":" + minutos.getDisplayValue() + " pm"+ " " + dia.getDisplayValue() + "/" + mes.getDisplayValue() +  "/" + año.getDisplayValue();
             }
             else
             { 
                 if((horas.getValue()-12) <10 )
                 {
-                    horaActual = "0" + (horas.getValue()-12) + ":" + minutos.getDisplayValue() + " pm";
+                    horaActual = "0" + (horas.getValue()-12) + ":" + minutos.getDisplayValue() + " pm"+ " " + dia.getDisplayValue() + "/" + mes.getDisplayValue() +  "/" + año.getDisplayValue();
                 }
                 else
                 {
-                    horaActual = (horas.getValue()-12) + ":"  + minutos.getDisplayValue() + " pm";
+                    horaActual = (horas.getValue()-12) + ":"  + minutos.getDisplayValue() + " pm"+ " " + dia.getDisplayValue() + "/" + mes.getDisplayValue() +  "/" + año.getDisplayValue();
                 }
             }
         }
